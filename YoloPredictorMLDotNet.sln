@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevKen.YoloPredictor", "YoloPredictor\DevKen.YoloPredictor.csproj", "{6BDC02F4-6042-4E98-9BB5-B9B6623E82BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevKen.YoloPredictor.Yolov5", "YoloPredictor.Yolov5\DevKen.YoloPredictor.Yolov5.csproj", "{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BDC02F4-6042-4E98-9BB5-B9B6623E82BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BDC02F4-6042-4E98-9BB5-B9B6623E82BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BDC02F4-6042-4E98-9BB5-B9B6623E82BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BDC02F4-6042-4E98-9BB5-B9B6623E82BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B031A59F-6AAB-4A7C-9981-9DDD6BFD6868}
+	EndGlobalSection
+EndGlobal

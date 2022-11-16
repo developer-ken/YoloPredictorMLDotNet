@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+	<LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyVersion>22.11.319.2</AssemblyVersion>
+    <FileVersion>22.11.319.2</FileVersion>
+    <Version>$(AssemblyVersion)</Version>
+    <Authors>developer_ken</Authors>
+    <Title>$(AssemblyName)</Title>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevKen.BitmapExtentionsForOnnx" Version="22.11.319.3" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.13.1" />
+  </ItemGroup>
+
+</Project>
