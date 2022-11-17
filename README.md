@@ -10,3 +10,13 @@ This project is designed to make YOLO intergration with .NET fast, easy and conv
 ## Use in critical projects?  
 DO NOT do that. This project is still under developing and comes with NO guarantee.  
 Post issues if any problems are found.
+## Usage example
+```  
+//Create a predictor by providing modulepath and a backend.
+//Install corresponding OnnxRuntime nuget package.
+//For example, you need Microsoft.ML.OnnxRuntime.Gpu for CUDA.
+IYoloPredictor predictor = new YoloPredictorV5(modulepath, backend:YoloPredictorV5.Backend.CUDA);
+
+//Predict on a Bitmap, then apply NMS and Confidence filter.
+var detresult = predictor.Predict((Bitmap)Bitmap.FromFile(picture)).NMSFilter().ConfidenceFilter();
+```
