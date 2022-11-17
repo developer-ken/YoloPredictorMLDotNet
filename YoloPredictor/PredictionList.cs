@@ -44,12 +44,21 @@ namespace DevKen.YoloPredictor
         {
             List<YoloPrediction> final_predications = new List<YoloPrediction>();
 
-            foreach(var p in predictions)
+            foreach (var p in predictions)
             {
-                if(p.Confidence>=confidence_threshold)
-                final_predications.Add(p);
+                if (p.Confidence >= confidence_threshold)
+                    final_predications.Add(p);
             }
             return final_predications;
+        }
+
+        public static List<YoloPrediction> MatchClassNames(this List<YoloPrediction> predictions, Dictionary<int, string> classnames)
+        {
+            foreach (var p in predictions)
+            {
+                p.LabelName = classnames.ContainsKey(p.LabelIndex) ? classnames[p.LabelIndex] : null;
+            }
+            return predictions;
         }
     }
 }

@@ -61,10 +61,6 @@ namespace DevKen.YoloPredictor
             float by2 = DRb.Box.MaxY;
             float bx2 = DRb.Box.MaxX;
 
-            Debug.Assert(ay1 < ay2);
-            Debug.Assert(ax1 < ax2);
-            Debug.Assert(by1 < by2);
-            Debug.Assert(bx1 < bx2);
 
             float x_left = Math.Max(ax1, bx1);
             float y_top = Math.Max(ay1, by1);
@@ -78,7 +74,7 @@ namespace DevKen.YoloPredictor
             float bb2_area = (bx2 - bx1) * (by2 - by1);
             float iou = intersection_area / (bb1_area + bb2_area - intersection_area);
 
-            Debug.Assert(iou >= 0 && iou <= 1);
+            //Debug.Assert(iou >= 0 && iou <= 1);
             return iou;
         }
     }

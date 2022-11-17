@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevKen.YoloPredictor", "YoloPredictor\DevKen.YoloPredictor.csproj", "{6BDC02F4-6042-4E98-9BB5-B9B6623E82BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevKen.YoloPredictor", "YoloPredictor\DevKen.YoloPredictor.csproj", "{6BDC02F4-6042-4E98-9BB5-B9B6623E82BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevKen.YoloPredictor.Yolov5", "YoloPredictor.Yolov5\DevKen.YoloPredictor.Yolov5.csproj", "{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevKen.YoloPredictor.Yolov5", "YoloPredictor.Yolov5\DevKen.YoloPredictor.Yolov5.csproj", "{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yolo5Test", "Yolo5Test\Yolo5Test.csproj", "{6F50EB8C-2A9B-41CA-9601-85FBA8173B27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AF12E8E-E11D-4FA9-B54C-215C4E37A5BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F50EB8C-2A9B-41CA-9601-85FBA8173B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F50EB8C-2A9B-41CA-9601-85FBA8173B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F50EB8C-2A9B-41CA-9601-85FBA8173B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F50EB8C-2A9B-41CA-9601-85FBA8173B27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
