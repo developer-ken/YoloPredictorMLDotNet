@@ -11,7 +11,8 @@ This project is designed to make YOLO intergration with .NET fast, easy and conv
 ## Use in critical projects?  
 DO NOT do that. This project is still under development and comes with NO guarantee.  
 Post issues if any problems are found.
-## Usage example
+## Usage example  
+### Predict on Bitmap  
 ```  
 //Create a predictor by providing modulepath and a backend.
 //Install corresponding OnnxRuntime nuget package.
@@ -20,4 +21,20 @@ IYoloPredictor predictor = new YoloPredictorV5(modulepath, backend:YoloPredictor
 
 //Predict on a Bitmap, then apply NMS and Confidence filter.
 var detresult = predictor.Predict((Bitmap)Bitmap.FromFile(picture)).NMSFilter().ConfidenceFilter();
+```  
+### Predict on Mat  
+Opencv read camera and run prediction.
+```  
+//Open video device
+VideoCapture vc = new VideoCapture(0);
+while (true)
+{
+  //If frame presents
+  if (vc.Read(image))
+  {
+    //Run detector on that frame, then apply NMSFilter and ConfidenceFilter.
+    var detresult = predictor.Predict(image).NMSFilter().ConfidenceFilter();
+    //** Do something with detresult here **
+  }
+}
 ```
