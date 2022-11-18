@@ -4,14 +4,15 @@
     <TargetFramework>netstandard2.1</TargetFramework>
 	<LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <AssemblyVersion>22.11.321.15</AssemblyVersion>
-    <FileVersion>22.11.321.15</FileVersion>
+    <AssemblyVersion>22.11.322.18</AssemblyVersion>
+    <FileVersion>22.11.322.18</FileVersion>
     <Version>$(AssemblyVersion)</Version>
     <Authors>developer_ken</Authors>
     <Title>$(AssemblyName)</Title>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageProjectUrl>https://github.com/developer-ken/YoloPredictorMLDotNet</PackageProjectUrl>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/developer-ken/YoloPredictorMLDotNet</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -6,60 +6,103 @@ using System.Text;
 
 namespace DevKen.YoloPredictor
 {
+    /// <summary>
+    /// Prediction result representing one detected object.
+    /// </summary>
     public class YoloPrediction
     {
+        /// <summary>
+        /// Location and size of detected object.
+        /// </summary>
         public BBox Box { get; set; } //[required]
 
+        /// <summary>
+        /// Lable index of the object, indicating object type.
+        /// </summary>
         public int LabelIndex { get; set; }
 
+        /// <summary>
+        /// Name of the detected object. May be null if not in label list.
+        /// </summary>
         public string? LabelName { get; set; }
 
+        /// <summary>
+        /// How certain is the predictor think this prediction is correct.
+        /// </summary>
         public float Confidence { get; set; }
 
-
-        public static List<YoloPrediction> NMS(List<YoloPrediction> predictions, float IOU_threshold = 0.45f, float score_threshold = 0.3f)
-        {
-            List<YoloPrediction> final_predications = new List<YoloPrediction>();
-
-            for (int i = 0; i < predictions.Count; i++)
-            {
-                int j = 0;
-                for (j = 0; j < final_predications.Count; j++)
-                {
-                    if (final_predications[j] % predictions[i] > IOU_threshold)
-                    {
-                        break;
-                    }
-                }
-                if (j == final_predications.Count)
-                {
-                    final_predications.Add(predictions[i]);
-                }
-            }
-            return final_predications;
-        }
-
         /// <summary>
-        /// Get the IOU of two predictions
+        /// Get the IOU of two prediction boxes.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns>IOU value between 0 and 1</returns>
         public static float operator %(YoloPrediction a, YoloPrediction b)
         {
+            return a.Box % b.Box;
+        }
+    }
+
+    /// <summary>
+    /// Area detected as an object in detections.
+    /// </summary>
+    public class BBox
+    {
+        public float MinX, MinY, MaxX, MaxY;
+        public BBox(float minX, float minY, float maxX, float maxY)
+        {
+            MinX = minX;
+            MinY = minY;
+            MaxX = maxX;
+            MaxY = maxY;
+        }
+
+        /// <summary>
+        /// X cord of the object center.
+        /// </summary>
+        public float CenterX => (MaxX + MinX) / 2;
+
+        /// <summary>
+        /// Y cord of the object center.
+        /// </summary>
+        public float CenterY => (MaxY + MinY) / 2;
+
+        /// <summary>
+        /// Width of the object.
+        /// </summary>
+        public float Width => MaxX - MinX;
+
+        /// <summary>
+        /// Height of the object.
+        /// </summary>
+        public float Height => MaxY - MinY;
+
+        /// <summary>
+        /// Area of the object.
+        /// </summary>
+        public float Area => Width * Height;
+
+        /// <summary>
+        /// Compute IOU of two boxes.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns>0~1 IOU value</returns>
+        public static float operator %(BBox a, BBox b)
+        {
             return ComputeIOU(a, b);
         }
 
-        private static float ComputeIOU(YoloPrediction DRa, YoloPrediction DRb)
+        private static float ComputeIOU(BBox DRa, BBox DRb)
         {
-            float ay1 = DRa.Box.MinY;
-            float ax1 = DRa.Box.MinX;
-            float ay2 = DRa.Box.MaxY;
-            float ax2 = DRa.Box.MaxX;
-            float by1 = DRb.Box.MinY;
-            float bx1 = DRb.Box.MinX;
-            float by2 = DRb.Box.MaxY;
-            float bx2 = DRb.Box.MaxX;
+            float ay1 = DRa.MinY;
+            float ax1 = DRa.MinX;
+            float ay2 = DRa.MaxY;
+            float ax2 = DRa.MaxX;
+            float by1 = DRb.MinY;
+            float bx1 = DRb.MinX;
+            float by2 = DRb.MaxY;
+            float bx2 = DRb.MaxX;
 
 
             float x_left = Math.Max(ax1, bx1);
@@ -78,18 +121,4 @@ namespace DevKen.YoloPredictor
             return iou;
         }
     }
-
-
-    public class BBox
-    {
-        public float MinX, MinY, MaxX, MaxY;
-        public BBox(float minX, float minY, float maxX, float maxY)
-        {
-            MinX = minX;
-            MinY = minY;
-            MaxX = maxX;
-            MaxY = maxY;
-        }
-    }
-
 }

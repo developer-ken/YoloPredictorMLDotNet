@@ -5,16 +5,15 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyVersion>22.11.321.36</AssemblyVersion>
-    <FileVersion>22.11.321.36</FileVersion>
+    <AssemblyVersion>22.11.322.47</AssemblyVersion>
+    <FileVersion>22.11.322.47</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DevKen.YoloPredictor.OpenCvBridge" Version="22.11.322.4" />
+    <PackageReference Include="DevKen.YoloPredictor.Yolov5" Version="22.11.322.18" />
     <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.13.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\YoloPredictorMLDotNet\YoloPredictor.Yolov5\DevKen.YoloPredictor.Yolov5.csproj" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.6.0.20220608" />
   </ItemGroup>
 
 </Project>

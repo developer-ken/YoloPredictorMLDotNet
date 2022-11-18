@@ -52,6 +52,12 @@ namespace DevKen.YoloPredictor
             return final_predications;
         }
 
+        /// <summary>
+        /// Set names of detections according to classnames.
+        /// </summary>
+        /// <param name="predictions"></param>
+        /// <param name="classnames"></param>
+        /// <returns></returns>
         public static List<YoloPrediction> MatchClassNames(this List<YoloPrediction> predictions, Dictionary<int, string> classnames)
         {
             foreach (var p in predictions)

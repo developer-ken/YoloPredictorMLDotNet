@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AssemblyVersion>22.11.322.4</AssemblyVersion>
+    <FileVersion>22.11.322.4</FileVersion>
+    <Title>$(AssemblyName)</Title>
+    <Version>$(AssemblyVersion)</Version>
+    <Authors>developer_ken</Authors>
+    <RepositoryUrl>https://github.com/developer-ken/YoloPredictorMLDotNet</RepositoryUrl>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevKen.YoloPredictor" Version="22.11.322.18" />
+    <PackageReference Include="OpenCvSharp4" Version="4.6.0.20220608" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.6.0.20220608" />
+  </ItemGroup>
+
+</Project>

@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DevKen.YoloPredictor.Yolov5
 {
-    public class YoloPredictorV5 : IYoloPredictor
+    public class YoloPredictorV5 : YoloPredictor
     {
         private InferenceSession onnxSession;
         private int PredictClasses;
@@ -21,11 +21,36 @@ namespace DevKen.YoloPredictor.Yolov5
         public Dictionary<int, string?> Names;
         public int Width, Height;
 
+        /// <summary>
+        /// Backends supported by YoloPredictorV5
+        /// </summary>
         public enum Backend
         {
-            CUDA, DirectML, CPU
+            /// <summary>
+            /// Cuda backend. You need nuget package "Microsoft.ML.OnnxRuntime.GPU" in your project; CUDA, cuDNN and zlib in your system for this option to work.
+            /// </summary>
+            CUDA,
+            /// <summary>
+            /// DirectML won't support all features in your module. Your module may need some patches to work.
+            /// </summary>
+            DirectML,
+            /// <summary>
+            /// Use only CPU to do all the caculation. This will be slow, but more compatible with different systems and devices.
+            /// </summary>
+            CPU
         }
 
+        /// <summary>
+        /// A YoloPredictor for Yolov5.
+        /// </summary>
+        /// <param name="modelfile_onnx">The .onnx file. Usually the training outcome.</param>
+        /// <param name="classes">How many classes do you have in your module? If this is not given, then try to use the number from onnx file.</param>
+        /// <param name="backend">Which caculating backend you want to use? If this is not given, use CPU for best compability.</param>
+        /// <param name="input_tensor_name">What is the name of the module input? If this is not given, then try to detect from onnx file.</param>
+        /// <param name="input_width">Input picture size? If this is not given, then try to detect from onnx file.</param>
+        /// <param name="input_height">Input picture size? If this is not given, then try to detect from onnx file.</param>
+        /// <param name="optimized_dir">Where to store optimized onnx file? Only used when using CPU backend.</param>
+        /// <exception cref="ArgumentNullException">If any parameter is not provided AND unable to auto detect, this exception will throw.</exception>
         public YoloPredictorV5(string modelfile_onnx, int classes = -1, Backend backend = Backend.CPU, string? input_tensor_name = null, int input_width = -1, int input_height = -1, string optimized_dir = "./OptimizedModles")
         {
             Names = new Dictionary<int, string?>();
@@ -137,7 +162,12 @@ namespace DevKen.YoloPredictor.Yolov5
             }
         }
 
-        public List<YoloPrediction> Predict(Bitmap img)
+        /// <summary>
+        /// Run prediction on a Bitmap instance. Take the picture and returns detection results.
+        /// </summary>
+        /// <param name="img">The picture to be detected.</param>
+        /// <returns>List of detected targets.</returns>
+        public override List<YoloPrediction> Predict(Bitmap img)
         {
             var resized_image = img.Resize(Width, Height);
             var input_tensor = resized_image.FastToOnnxTensor_13hw();
@@ -204,9 +234,17 @@ namespace DevKen.YoloPredictor.Yolov5
             return detections;
         }
 
-        public Task<List<YoloPrediction>> PredictAsync(Bitmap img)
+        /// <summary>
+        /// Run prediction on a Bitmap instance async. Take the picture and returns detection results.
+        /// </summary>
+        /// <param name="img">The picture to be detected.</param>
+        /// <returns>List of detected targets.</returns>
+        public override async Task<List<YoloPrediction>> PredictAsync(Bitmap img)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() =>
+            {
+                return Predict(img);
+            });
         }
     }
 }
