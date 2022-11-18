@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
 	<LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <AssemblyVersion>22.11.321.14</AssemblyVersion>
-    <FileVersion>22.11.321.14</FileVersion>
+    <AssemblyVersion>22.11.321.15</AssemblyVersion>
+    <FileVersion>22.11.321.15</FileVersion>
     <Version>$(AssemblyVersion)</Version>
     <Authors>developer_ken</Authors>
     <Title>$(AssemblyName)</Title>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/developer-ken/YoloPredictorMLDotNet</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

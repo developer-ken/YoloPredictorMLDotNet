@@ -12,6 +12,11 @@ namespace Yolo5Test
             IYoloPredictor predictor = new YoloPredictorV5(modulepath, backend:YoloPredictorV5.Backend.CUDA, input_width: 640, input_height: 640);
             var picture = Console.ReadLine();
             var detresult = predictor.Predict((Bitmap)Bitmap.FromFile(picture)).NMSFilter().ConfidenceFilter();
+            foreach(var det in detresult)
+            {
+
+                Console.WriteLine(det.LabelName + " LeftUp=(" + det.Box.MinX + "," + det.Box.MinY + ") Confidence=" + det.Confidence);
+            }
         }
     }
 }
