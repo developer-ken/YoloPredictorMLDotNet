@@ -8,7 +8,7 @@ DevKen.YoloPredictor.Yolov5: [![NuGet version (DevKen.YoloPredictor.Yolov5)](htt
 ## What is this?  
 This project is designed to make YOLO intergration with .NET fast, easy and convenient. Programmers don't have to understand details about YOLO or ML, just feed the Predictor with trained moudle and images, then receive the results.  
 ## Use in critical projects?  
-DO NOT do that. This project is still under developing and comes with NO guarantee.  
+DO NOT do that. This project is still under development and comes with NO guarantee.  
 Post issues if any problems are found.
 ## Usage example
 ```  
