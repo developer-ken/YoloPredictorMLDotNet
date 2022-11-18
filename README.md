@@ -17,7 +17,7 @@ Post issues if any problems are found.
 //Create a predictor by providing modulepath and a backend.
 //Install corresponding OnnxRuntime nuget package.
 //For example, you need Microsoft.ML.OnnxRuntime.Gpu for CUDA.
-IYoloPredictor predictor = new YoloPredictorV5(modulepath, backend:YoloPredictorV5.Backend.CUDA);
+YoloPredictor predictor = new YoloPredictorV5(modulepath, backend:YoloPredictorV5.Backend.CUDA);
 
 //Predict on a Bitmap, then apply NMS and Confidence filter.
 var detresult = predictor.Predict((Bitmap)Bitmap.FromFile(picture)).NMSFilter().ConfidenceFilter();
@@ -25,8 +25,12 @@ var detresult = predictor.Predict((Bitmap)Bitmap.FromFile(picture)).NMSFilter().
 ### Predict on Mat  
 Opencv read camera and run prediction.
 ```  
+//Create a predictor by providing modulepath and a backend.
+YoloPredictor predictor = new YoloPredictorV5(modulepath, backend:YoloPredictorV5.Backend.CUDA, input_width: 640, input_height: 640);
+
 //Open video device
 VideoCapture vc = new VideoCapture(0);
+
 while (true)
 {
   //If frame presents
