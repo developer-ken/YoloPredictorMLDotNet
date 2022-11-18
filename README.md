@@ -28,7 +28,7 @@ var detresult = predictor.Predict((Bitmap)Bitmap.FromFile(picture)).NMSFilter().
 Opencv read camera and run prediction.
 ```  
 //Create a predictor by providing modulepath and a backend.
-YoloPredictor predictor = new YoloPredictorV5(modulepath, backend:YoloPredictorV5.Backend.CUDA, input_width: 640, input_height: 640);
+YoloPredictor predictor = new YoloPredictorV5(modulepath, backend:YoloPredictorV5.Backend.CUDA);
 
 //Open video device
 VideoCapture vc = new VideoCapture(0);
