@@ -1,0 +1,54 @@
+name: NugetPublish
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkout submodules # checkout rest
+      shell: bash
+      run: |
+        auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+        git submodule sync --recursive
+        git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    - name: Publish NuGet DevKen.YoloPredictor
+      # You may pin to the exact commit or the version.
+      # uses: brandedoutcast/publish-nuget@c12b8546b67672ee38ac87bea491ac94a587f7cc
+      uses: Rebel028/publish-nuget@v2.8.0
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: YoloPredictor/DevKen.YoloPredictor.csproj
+        # NuGet package id, used for version detection & defaults to project name
+        PACKAGE_NAME: DevKen.YoloPredictor
+        # API key to authenticate with NuGet server
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        
+    - name: Publish NuGet YoloPredictor.Yolov5
+      # You may pin to the exact commit or the version.
+      # uses: brandedoutcast/publish-nuget@c12b8546b67672ee38ac87bea491ac94a587f7cc
+      uses: Rebel028/publish-nuget@v2.8.0
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: YoloPredictor.Yolov5/DevKen.YoloPredictor.Yolov5.csproj
+        # NuGet package id, used for version detection & defaults to project name
+        PACKAGE_NAME: DevKen.YoloPredictor.Yolov5
+        # API key to authenticate with NuGet server
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
