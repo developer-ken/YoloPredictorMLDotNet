@@ -3,6 +3,7 @@
 This project provide following packages:  
 DevKen.YoloPredictor: [![NuGet version (DevKen.YoloPredictor)](https://img.shields.io/nuget/v/DevKen.YoloPredictor.svg?style=flat)](https://www.nuget.org/packages/DevKen.YoloPredictor/)  
 DevKen.YoloPredictor.Yolov5: [![NuGet version (DevKen.YoloPredictor.Yolov5)](https://img.shields.io/nuget/v/DevKen.YoloPredictor.Yolov5.svg?style=flat)](https://www.nuget.org/packages/DevKen.YoloPredictor.Yolov5/)  
+DevKen.YoloPredictor.OpenCvBridge: [![NuGet version (DevKen.YoloPredictor.OpenCvBridge)](https://img.shields.io/nuget/v/DevKen.YoloPredictor.OpenCvBridge.svg?style=flat)](https://www.nuget.org/packages/DevKen.YoloPredictor.OpenCvBridge/)  
   
 ------  
 ## What is this?  
