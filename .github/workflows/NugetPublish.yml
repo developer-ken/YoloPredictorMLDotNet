@@ -52,3 +52,15 @@ jobs:
         PACKAGE_NAME: DevKen.YoloPredictor.Yolov5
         # API key to authenticate with NuGet server
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        
+    - name: Publish NuGet YoloPredictor.OpenCvBridge
+      # You may pin to the exact commit or the version.
+      # uses: brandedoutcast/publish-nuget@c12b8546b67672ee38ac87bea491ac94a587f7cc
+      uses: Rebel028/publish-nuget@v2.8.0
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: DevKen.YoloPredictor.OpenCvBridge/DevKen.YoloPredictor.OpenCvBridge.csproj
+        # NuGet package id, used for version detection & defaults to project name
+        PACKAGE_NAME: DevKen.YoloPredictor.OpenCvBridge
+        # API key to authenticate with NuGet server
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
