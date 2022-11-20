@@ -73,7 +73,7 @@ namespace DevKen.YoloPredictor.Yolov5
                     }
                     break;
                 case Backend.DirectML:
-                    options.AppendExecutionProvider_CPU();
+                    options.AppendExecutionProvider_DML();
                     break;
             }
             Directory.CreateDirectory(optimized_dir);
@@ -97,7 +97,7 @@ namespace DevKen.YoloPredictor.Yolov5
                     }
                     else
                     {
-                        throw new ArgumentNullException("Can not autodetect classes from onnx. Set a positive number on argument 'classes'.");
+                        throw new ArgumentNullException("classes", "Can not autodetect classes from onnx. Set a positive number on argument 'classes'.");
                     }
                 }
                 else
@@ -111,11 +111,11 @@ namespace DevKen.YoloPredictor.Yolov5
                     var metadata = onnxSession.InputMetadata;
                     if (metadata.Count == 0)
                     {
-                        throw new ArgumentNullException("No entrance found in onnx. Check your module file or set 'input_tensor_name'.");
+                        throw new ArgumentNullException("input_tensor_name","No entrance found in onnx. Check your module file or set 'input_tensor_name'.");
                     }
                     if (metadata.Count != 1)
                     {
-                        throw new ArgumentNullException("Muiltiple entrances found in onnx. Set 'input_tensor_name' manualy is required.");
+                        throw new ArgumentNullException("input_tensor_name", "Muiltiple entrances found in onnx. Set 'input_tensor_name' manualy is required.");
                     }
                     InputTensorName = metadata.Keys.First();
                 }
@@ -214,10 +214,10 @@ namespace DevKen.YoloPredictor.Yolov5
                     var value_2 = results[index + 2];
                     var value_3 = results[index + 3];
 
-                    var bbox = new BBox((value_0 - value_2 / 2) / inputlWidth,
-                                (value_1 - value_3 / 2) / inputlWidth,
-                                (value_0 + value_2 / 2) / inputHeight,
-                                (value_1 + value_3 / 2) / inputHeight);
+                    var bbox = new BBox((value_0 - value_2 / 2),
+                                (value_1 - value_3 / 2),
+                                (value_0 + value_2 / 2),
+                                (value_1 + value_3 / 2));
 
                     var l_index = k - labelStartIndex;
                     detections.Add(new YoloPrediction()
