@@ -36,7 +36,11 @@ Do **NOT** use `--dynamic` if you want to use auto-configure function of the rep
 ```
 python export.py --weights PATH_TO_TRAINED_WEIGHT_PT --data PATH_TO_DATASET_CONFIG_FILE_YML --include onnx --opset 15
 ```  
-Then use the code examples above, change `backend:YoloPredictorV5.Backend.CUDA` to `backend:YoloPredictorV5.Backend.DirectML`.
+Then use the code examples at the bottom of this page, change `backend:YoloPredictorV5.Backend.CUDA` to `backend:YoloPredictorV5.Backend.DirectML`.
+
+## Cuda  
+To run OnnxRuntime.Cuda, refer to the official documentation: [CUDA-ExecutionProvider](https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html)
+
 ## Usage example  
 ### Predict on Bitmap  
 ```  
